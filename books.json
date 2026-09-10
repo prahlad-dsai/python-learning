@@ -1,0 +1,12 @@
+[
+    {
+        "title": "Harry potter",
+        "author": "JK Rowling",
+        "available": true
+    },
+    {
+        "title": "Atomic Habits",
+        "author": "James Clear",
+        "available": true
+    }
+]

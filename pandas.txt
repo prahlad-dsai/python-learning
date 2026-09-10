@@ -1,0 +1,63 @@
+import pandas as pd
+
+data = {
+    "Name": ["Arjun", "Ravi", "Priya", "Kiran", "Anu", "Rahul"],
+    "Department": ["CSE", "ECE", "CSE", "ECE", "CSE", "ECE"],
+    "Marks": [85, 72, 91, 65, 78, 88]
+}
+
+df = pd.DataFrame(data)
+
+print(df)
+print(df.shape)
+print(df.columns)
+print(df.dtypes)
+print(df["Name"])
+print(df["Marks"])
+print(df[["Name", "Marks"]])
+
+
+print(df.iloc[0])
+print(df.iloc[2])
+print(df.iloc[1:3])
+print(df.iloc[0, 2])
+
+
+print(df.loc[0])
+print(df.loc[2])
+print(df.loc[0, "Name"])
+print(df.loc[2, "Marks"])
+print(df[df["Marks"] > 75])
+
+print(df.sort_values("Marks", ascending=False))
+
+df["Passed"] = df["Marks"] >= 40
+
+df.loc[1, "Marks"] = 78
+
+print(df)
+
+print(df.groupby("Department")["Marks"].max())
+
+import pandas as pd
+
+df = pd.read_csv("students.csv")
+
+print(df)
+df.isna()
+df.isna().sum()
+print("\nAfter dropping missing rows:")
+print(df.dropna())
+
+df["Age"] = df["Age"].fillna(df["Age"].mean())
+df["Marks"] = df["Marks"].fillna(df["Marks"].mean())
+
+print("\nAfter filling with mean:")
+print(df)
+
+# Add a Pass/Fail column
+df["Result"] = df["Marks"].apply(lambda x: "Pass" if x >= 40 else "Fail")
+
+print(df)
+
+print((df["Result"] == "Pass").sum())
